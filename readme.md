@@ -56,27 +56,39 @@ The following steps describe the native installation. Alternatively, use the pro
     $ cd ~/catkin_ws/src
     $ git clone https://github.com/NVlabs/Deep_Object_Pose.git dope
     ```
-
-4. **Install python dependencies**
+    
+4. **Install PyTorch** (you might need a different installation based on your configuration, find details [here](https://pytorch.org/))
+    ```
+    pip3 install torch==1.10.1+cu113 torchvision==0.11.2+cu113 torchaudio==0.10.1+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html
+    ```
+    
+5. **Install python dependencies**
     ```
     $ cd ~/catkin_ws/src/dope
     $ python3 -m pip install -r requirements.txt
     ```
-
-5. **Install ROS dependencies**
+    
+6. **Install camera_info_manager_py dependency**
+    ```
+    $ cd /tmp
+    $ git clone https://github.com/ros-perception/camera_info_manager_py
+    $ cp -r camera_info_manager_py/src/camera_info_manager /opt/ros/noetic/lib/python3/dist-packages/
+    ```
+    
+7. **Install ROS dependencies**
     ```
     $ cd ~/catkin_ws
     $ rosdep install --from-paths src -i --rosdistro noetic
     $ sudo apt-get install ros-noetic-rosbash ros-noetic-ros-comm
     ```
 
-6. **Build**
+8. **Build**
     ```
     $ cd ~/catkin_ws
     $ catkin_make
     ```
 
-7. **Download [the weights](https://drive.google.com/open?id=1DfoA3m_Bm0fW8tOWXGVxi4ETlLEAgmcg)** and save them to the `weights` folder, *i.e.*, `~/catkin_ws/src/dope/weights/`.
+9. **Download [the weights](https://drive.google.com/open?id=1DfoA3m_Bm0fW8tOWXGVxi4ETlLEAgmcg)** and save them to the `weights` folder, *i.e.*, `~/catkin_ws/src/dope/weights/`.
 
 
 ## Running
