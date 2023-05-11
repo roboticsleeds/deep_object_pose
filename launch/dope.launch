@@ -3,5 +3,7 @@
 
   <node name="dope" pkg="dope" type="dope" output="screen" clear_params="true">
     <rosparam file="$(arg config)"/>
+    <remap from="/dope/webcam/image_raw" to="/camera/color/image_raw"/>
+    <remap from="/dope/webcam/camera_info" to="/camera/color/camera_info"/>
   </node>
 </launch>
